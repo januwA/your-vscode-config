@@ -8,8 +8,12 @@
 	"engines": {
 		"vscode": "^1.41.0"
 	},
-	"categories": [ "Other" ],
-	"activationEvents": [ "onCommand:cowsay.config" ],
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:cowsay.config"
+	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
