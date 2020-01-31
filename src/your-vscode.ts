@@ -1,8 +1,6 @@
 import * as vscode from "vscode";
 import * as path from "path";
 import { sendGist } from "./util/send-gist";
-import { getSettings } from "./util/get-user-settings";
-import { getExtensions } from "./util/get-extensions";
 import { pullUserVscodeConfig } from "./util/pull-user-vscode-config";
 
 export interface IUserConfig {
@@ -13,7 +11,7 @@ export interface IUserConfig {
 
 export interface IUserVscodeConfig {
   settings: string;
-  extension: string[];
+  extensions: string[];
 }
 
 export interface IMessage {
@@ -134,8 +132,6 @@ export class YourVscode {
           // 保存user config
           case "save":
             try {
-              console.log(message.config);
-              
               this._saveUserConfig(message.config);
               vscode.window.showInformationMessage("Save Success.");
             } catch (error) {
@@ -159,7 +155,7 @@ export class YourVscode {
           // 拉取gist配置，同步到本地
           case "pull":
             try {
-              pullUserVscodeConfig(this._getUserConfig());
+              await pullUserVscodeConfig(this._getUserConfig());
             } catch (error) {
               vscode.window.showErrorMessage(`Pull Error: ${error}`);
             }
@@ -176,13 +172,7 @@ export class YourVscode {
     });
   }
 
-  doRefactor() {
-    // 将消息发送到webview
-    // 您可以发送任何JSON可序列化的数据
-    this._panel.webview.postMessage({ command: "refactor" });
-  }
-
-  public dispose() {
+   dispose() {
     YourVscode.currentPanel = undefined;
 
     // Clean up our resources
@@ -247,6 +237,7 @@ export class YourVscode {
                     min-height: 100vh;
                   }
                   .container {
+                    width: 70vw;
                     padding: 1em;
                     display: grid;
                     grid-row-gap: .5em;
@@ -284,6 +275,7 @@ export class YourVscode {
                   id="gistId"
                   placeholder="Your gistId"
                 />
+
                 <div class="btns">
                   <button id="push">push</button>
                   <button id="pull">pull</button>

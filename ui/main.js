@@ -1,39 +1,37 @@
+function $(select) {
+  return document.querySelector(select);
+}
+
 function getInputValue() {
-  const githubTokenInput = document.getElementById("githubToken");
-  const gistIdInput = document.getElementById("gistId");
-  const vscodeBinInput = document.getElementById("vscodeBin");
   return {
-    githubToken: githubTokenInput.value.trim(),
-    gistId: gistIdInput.value.trim(),
-    vscodeBinPath: vscodeBinInput.trim()
+    githubToken: $("#githubToken").value.trim(),
+    gistId: $("#gistId").value.trim(),
+    vscodeBinPath: $("#vscodeBin").value.trim()
   };
 }
 function setInputValue({ githubToken, gistId, vscodeBinPath }) {
-  const githubTokenInput = document.getElementById("githubToken");
-  const gistIdInput = document.getElementById("gistId");
-  const vscodeBinInput = document.getElementById("vscodeBin");
-  githubTokenInput.value = githubToken;
-  gistIdInput.value = gistId;
-  vscodeBinInput.value = vscodeBinPath;
+  $("#githubToken").value = githubToken;
+  $("#gistId").value = gistId;
+  $("#vscodeBin").value = vscodeBinPath;
 }
 
 // 此脚本将在webview本身中运行
 // 它不能直接访问主要的VS Code API
 (function() {
   const vscode = acquireVsCodeApi();
-  document.getElementById("push").addEventListener("click", e => {
+  $("#push").addEventListener("click", e => {
     vscode.postMessage({
       command: "push",
       config: getInputValue()
     });
   });
-  document.getElementById("pull").addEventListener("click", e => {
+  $("#pull").addEventListener("click", e => {
     vscode.postMessage({
       command: "pull",
       config: getInputValue()
     });
   });
-  document.getElementById("save").addEventListener("click", e => {
+  $("#save").addEventListener("click", e => {
     vscode.postMessage({
       command: "save",
       config: getInputValue()

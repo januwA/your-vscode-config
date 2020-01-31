@@ -4,7 +4,7 @@
 	"description": "保存您vscode的`settings.json`和`extensions`用于在多台设备上同步",
 	"publisher": "Ajanuw",
 	"icon": "images/logo.png",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"engines": {
 		"vscode": "^1.41.0"
 	},
