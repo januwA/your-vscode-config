@@ -15,7 +15,7 @@ inputs:
 
 buttons: 
 - `push`按钮将会保存`inputs`的配置，并把本地的`settings.json`和`extensions`保存到`gist`
-- `pull`按钮将会拉取`gist`上保存的配置，并设置到本地`settings.json`，和安装`extensions`，安装过程非常缓慢，耐心等待就好，安装完成后重启`vscode`
+- `pull`按钮将会拉取`gist`上保存的配置，并设置到本地`settings.json`，和安装`extensions`，安装过程非常缓慢，耐心等待就好，安装完成后重启`vscode`. (自动安装很可能会失败，您可以选择手动安装)
 - `save`按钮，只会保存`inputs`的配置
 
 具体可以看源码。

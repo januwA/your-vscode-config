@@ -15,6 +15,19 @@ function setInputValue({ githubToken, gistId, vscodeBinPath }) {
   $("#vscodeBin").value = vscodeBinPath;
 }
 
+function showExtensions(extentions) {
+  const extentionsEl = $("#extentions");
+  extentionsEl.style.display = 'block';
+  const olEL = extentionsEl.querySelector('ol');
+  olEL.innerHTML = '';
+  
+  extentions.forEach(e => {
+    const liEl = document.createElement("li");
+    liEl.innerHTML = e;
+    olEL.append(liEl);
+  })
+}
+
 // 此脚本将在webview本身中运行
 // 它不能直接访问主要的VS Code API
 (function() {
@@ -43,6 +56,9 @@ function setInputValue({ githubToken, gistId, vscodeBinPath }) {
     switch (message.command) {
       case "init":
         setInputValue(message.config);
+        break;
+      case "extensions":
+        showExtensions(message.extensions);
         break;
     }
   });

@@ -1,9 +1,11 @@
-# Change Log
+## 0.1.2 - 2020-2-1
 
-All notable changes to the "your-vscode-config" extension will be documented in this file.
+- 显示扩展程序，用于手动安装
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## 0.1.1 - 2020-2-1
 
-## [Unreleased]
+- 优化安装扩展程序代码
+
+## 0.1.0 - 2020-1-31
 
 - Initial release

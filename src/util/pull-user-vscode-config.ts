@@ -20,7 +20,7 @@ export function codeExec(codePath: string, cmd: string) {
   });
 }
 
-export async function pullUserVscodeConfig(config: IUserConfig) {
+export async function pullUserVscodeConfig(config: IUserConfig, cb: (extensions: string[])=> void) {
   vscode.window.showInformationMessage("开始获取配置文件...");
   const http = createHttp(config.githubToken);
   const { data } = await http.get(`/gists/${config.gistId}`);
@@ -28,6 +28,7 @@ export async function pullUserVscodeConfig(config: IUserConfig) {
     data.files["c.json"].content
   );
   if (userVscodeConfig) {
+    cb(userVscodeConfig.extensions);
     let extensions = userVscodeConfig.extensions.map((extensionId) => {
       return () => {
         vscode.window.showInformationMessage(

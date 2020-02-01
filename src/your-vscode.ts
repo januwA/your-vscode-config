@@ -149,7 +149,12 @@ export class YourVscode {
 					// 拉取gist配置，同步到本地
 					case 'pull':
 						try {
-							await pullUserVscodeConfig(this._getUserConfig());
+							await pullUserVscodeConfig(this._getUserConfig(), (extensions: string[]) => {
+								this._panel.webview.postMessage({
+									command: 'extensions',
+									extensions: extensions
+								});
+							});
 						} catch (error) {
 							vscode.window.showErrorMessage(`Pull Error: ${error}`);
 						}
@@ -224,15 +229,14 @@ export class YourVscode {
                   body {
                     padding: 0;
                     margin: 0;
-                    display: grid;
-                    place-content: center;
                     min-height: 100vh;
                   }
                   .container {
                     width: 70vw;
                     padding: 1em;
                     display: grid;
-                    grid-row-gap: .5em;
+										grid-row-gap: .5em;
+										margin: 1rem auto;
                   }
                   .input-item {
                     padding: 0.6em;
@@ -272,7 +276,12 @@ export class YourVscode {
                   <button id="push">push</button>
                   <button id="pull">pull</button>
                   <button id="save">save</button>
-                </div>
+								</div>
+								<section id="extentions" style="display: none;">
+									<h1>Extentions</h1>
+									<ol>
+									</ol>
+								</section>
               </section>
                 <script nonce="${nonce}" src="${scriptUri}"></script>
             </body>
