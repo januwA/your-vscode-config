@@ -4,7 +4,7 @@
 	"description": "保存您vscode的`settings.json`和`extensions`用于在多台设备上同步",
 	"publisher": "Ajanuw",
 	"icon": "images/logo.png",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"engines": {
 		"vscode": "^1.41.0"
 	},
@@ -33,14 +33,14 @@
 		"compile": "tsc -p ./",
 		"watch": "tsc -watch -p ./",
 		"pretest": "npm run compile",
-		"test": "node ./out/test/runTest.js"
+		"test": "node ./out/test/runTest.js",
+		"build": "vsce package"
 	},
 	"devDependencies": {
 		"@types/fs-extra": "^8.0.1",
 		"@types/glob": "^7.1.1",
 		"@types/mocha": "^5.2.7",
 		"@types/node": "^12.11.7",
-		"@types/shelljs": "^0.8.6",
 		"@types/vscode": "^1.41.0",
 		"glob": "^7.1.5",
 		"mocha": "^6.2.2",
@@ -50,7 +50,6 @@
 	},
 	"dependencies": {
 		"axios": "^0.19.2",
-		"fs-extra": "^8.1.0",
-		"shelljs": "^0.8.3"
+		"fs-extra": "^8.1.0"
 	}
 }

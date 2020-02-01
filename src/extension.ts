@@ -12,4 +12,4 @@ export async function activate(context: vscode.ExtensionContext) {
 }
 
 // 停用扩展程序时，将调用此方法
-export function deactivate() {}
+export function deactivate() { }

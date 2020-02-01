@@ -10,7 +10,7 @@ export async function getExtensions() {
 			.filter((s) => !s.startsWith('.'))
 			.filter((s) => fs.lstatSync(path.join(extensionsDir, s)).isDirectory())
 			.map((s) => s.replace(/(?:-\d+\.\d+\.\d+)$/g, ''));
-		return extensions;
+		return Array.from(new Set(extensions));
 	} else {
 		throw new Error(`插件安装目录没有找到.`);
 	}
