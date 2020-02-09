@@ -5,27 +5,12 @@ function $(select) {
 function getInputValue() {
   return {
     githubToken: $("#githubToken").value.trim(),
-    gistId: $("#gistId").value.trim(),
-    vscodeBinPath: $("#vscodeBin").value.trim()
+    gistId: $("#gistId").value.trim()
   };
 }
-function setInputValue({ githubToken, gistId, vscodeBinPath }) {
+function setInputValue({ githubToken, gistId }) {
   $("#githubToken").value = githubToken;
   $("#gistId").value = gistId;
-  $("#vscodeBin").value = vscodeBinPath;
-}
-
-function showExtensions(extentions) {
-  const extentionsEl = $("#extentions");
-  extentionsEl.style.display = 'block';
-  const olEL = extentionsEl.querySelector('ol');
-  olEL.innerHTML = '';
-  
-  extentions.forEach(e => {
-    const liEl = document.createElement("li");
-    liEl.innerHTML = e;
-    olEL.append(liEl);
-  })
 }
 
 // 此脚本将在webview本身中运行
@@ -56,9 +41,6 @@ function showExtensions(extentions) {
     switch (message.command) {
       case "init":
         setInputValue(message.config);
-        break;
-      case "extensions":
-        showExtensions(message.extensions);
         break;
     }
   });

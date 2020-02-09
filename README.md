@@ -1,8 +1,10 @@
 # your-vscode-config
 
+## 停止维护,请尝试使用[vscode-config](https://github.com/januwA/vscode-config)命令行工具
+
 vscode插件，同步本地的`settings.json`和`extentions`
 
-1. 创建一个gist并获取gist的id，在gist中创建一个`c.json`的文件，配置会被写入进去
+1. 创建一个gist并获取gist的id，在gist中创建一个`c.json5`的文件，配置会被写入进去
 2. 创建一个github的token，并给与`repo`和`gist`权限。
 3. 使用vscode快捷键`ctrl+P`，并输入`your vscode config`将会出现以下页面
 
